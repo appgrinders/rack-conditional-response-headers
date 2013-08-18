@@ -4,7 +4,7 @@ module Rack
   
   class ConditionalResponseHeaders
     
-    def initialize(app, conditions=[]) # Bad to initialize array in args, like Python?
+    def initialize(app, conditions=[])
       @app=app
       @conditions = conditions
     end

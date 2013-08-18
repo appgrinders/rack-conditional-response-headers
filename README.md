@@ -1,6 +1,6 @@
 # Rack::ConditionalResponseHeaders
 
-TODO: Write a gem description
+Rack middleware: Sets response headers based on matching URL conditions
 
 ## Installation
 
@@ -14,6 +14,17 @@ Or install it yourself as:
 
 ## Usage
 
+    # Create a list of URL match conditions along with headers that should be applied
+    conditions = [] 
+    conditions.push	[/localhost/, {'Cache-Control'=>'no-cache'}]
+    conditions.push	[/\.herokuapp\.com\/?.*/, {'X-Robots-Tag'=>'noindex, nofollow'}]
+    conditions.push	[/.*/, {'X-Frame-Options'=>nil}] # Use nil to delete header
+    use Rack::ConditionalResponseHeaders, conditions
 
+### URL match examples:
 
-
+- `/.*/` = Any URL
+- `/\.herokuapp\.com\/?.*/` = Is 'herokuapp.com' domain
+- `/\.pdf$|\.png$/` = Ends in '.pdf' or '.png'
+- `/localhost/` = Contains 'localhost'
+- `/^(?!.*localhost).*$ /` = Does not contain 'localhost'
