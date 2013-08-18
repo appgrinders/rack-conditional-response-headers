@@ -1,17 +1,40 @@
 require "rack/conditional_response_headers/version"
 
 module Rack
+  
   class ConditionalResponseHeaders
-    def initialize(app)
+    
+    def initialize(app, conditions=[]) # Bad to initialize array in args, like Python?
       @app=app
+      @conditions = conditions
     end
 
     def call(env)
-      [200, {"Content-Type" => "text/html"}, self]
+      @status, @headers, @response = @app.call(env)
+      @request = Rack::Request.new(env)
+      [@status, _apply_headers, @response]
     end
 
-    def each(&block)
-      block.call("CONDITIONAL RESPONSE HEADERS")
-    end
+    private
+
+      def _apply_headers
+        url =  @request.url
+        @conditions.each do |item|
+          condition = item[0] 
+          if condition =~ @request.url
+            headers = item[1]
+            headers.each do |key, value|
+              if value.nil?
+                @headers.delete(key)
+              else
+                @headers[key] = value
+              end
+            end
+          end
+        end
+        @headers
+      end
+    
   end
+  
 end
