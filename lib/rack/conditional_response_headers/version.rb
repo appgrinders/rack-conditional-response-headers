@@ -1,5 +1,5 @@
 module Rack
-  module ConditionalResponseHeaders
-    VERSION = "0.0.1"
+  class ConditionalResponseHeaders
+    VERSION = "0.0.2"
   end
 end

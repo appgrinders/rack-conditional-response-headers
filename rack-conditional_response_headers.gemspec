@@ -7,9 +7,9 @@ Gem::Specification.new do |spec|
   spec.name          = "rack-conditional_response_headers"
   spec.version       = Rack::ConditionalResponseHeaders::VERSION
   spec.authors       = ["Yarin Kessler"]
-  spec.email         = ["ykessler@gmail.com"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
+  spec.email         = ["ykessler@appgrinders.com"]
+  spec.description   = %q{Rack middleware: Sets response headers based on matching URL conditions}
+  spec.summary       = %q{Rack middleware: Sets response headers based on matching URL conditions}
   spec.homepage      = ""
   spec.license       = "MIT"
 
