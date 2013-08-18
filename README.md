@@ -19,6 +19,7 @@ Or install it yourself as:
     conditions.push	[/localhost/, {'Cache-Control'=>'no-cache'}]
     conditions.push	[/\.herokuapp\.com\/?.*/, {'X-Robots-Tag'=>'noindex, nofollow'}]
     conditions.push	[/.*/, {'Server'=>nil}] # Use nil to delete header
+    
     use Rack::ConditionalResponseHeaders, conditions
 
 ### URL match examples:
@@ -27,4 +28,4 @@ Or install it yourself as:
 - `/\.herokuapp\.com\/?.*/` = Is 'herokuapp.com' domain
 - `/\.pdf$|\.png$/` = Ends in '.pdf' or '.png'
 - `/localhost/` = Contains 'localhost'
-- `/^(?!.*localhost).*$ /` = Does not contain 'localhost'
+- `/^(?!.*localhost).*$/` = Does not contain 'localhost'
