@@ -18,7 +18,7 @@ Or install it yourself as:
     conditions = [] 
     conditions.push	[/localhost/, {'Cache-Control'=>'no-cache'}]
     conditions.push	[/\.herokuapp\.com\/?.*/, {'X-Robots-Tag'=>'noindex, nofollow'}]
-    conditions.push	[/.*/, {'X-Frame-Options'=>nil}] # Use nil to delete header
+    conditions.push	[/.*/, {'Server'=>nil}] # Use nil to delete header
     use Rack::ConditionalResponseHeaders, conditions
 
 ### URL match examples:
