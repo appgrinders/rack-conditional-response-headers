@@ -1,11 +1,10 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'rack/conditional_response_headers/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "rack-conditional_response_headers"
-  spec.version       = Rack::ConditionalResponseHeaders::VERSION
+  spec.version       = "0.0.5"
   spec.authors       = ["Yarin Kessler"]
   spec.email         = ["ykessler@appgrinders.com"]
   spec.description   = %q{Rack middleware: Sets response headers based on matching URL conditions}
